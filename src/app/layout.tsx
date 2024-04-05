@@ -5,7 +5,6 @@ import "./globals.css";
 import { cn } from "@/lib/utils";
 import Navbar from "@/components/(Header)/page";
 
-
 const fontSans = FontSans({
   subsets: ["latin"],
   variable: "--font-sans",
