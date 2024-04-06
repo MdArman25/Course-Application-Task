@@ -2,6 +2,8 @@
 import axios from "axios";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
+import { FaRegHeart } from "react-icons/fa";
+import { IoShareSocial } from "react-icons/io5";
 
 interface Video {
   id: number;
@@ -58,37 +60,37 @@ const VideoPlayer = () => {
 
     return (
         <div>
-                <div>
+                <div className=" ">
       {course && (
-        <div className="bg-white lg:col-span-2 rounded-lg overflow-hidden shadow-md">
+        <div className="bg-white lg:col-span-2 grid lg:grid-cols-6 
+        xl:grid-cols-6 2xl:grid-cols-6  justify-between rounded-lg overflow-hidden shadow-md">
+          <div className=" col-span-4 h-fit">
           <Image
-            className="border-2 h-full"
+            className="w-full h-full "
             src={course.image}
-            width={100}
+            width={300}
             height={200}
             alt=""
           />
-          <div className="p-4">
             <div className="flex justify-between items-center pb-6">
               <div className="flex gap-3 items-center">
                 <p className="text-lg font-semibold text-gray-800 mb-2">
                   {course.title}
                 </p>
-                <p className="text-gray-200">Views</p>
+                <p className="text-gray-200">12K Views</p>
               </div>
-              <div className="flex gap-5">
-                <p>React Icon</p>
-                <p> Share Icon</p>
+              <div className="flex gap-5 mr-9 text-2xl">
+              <FaRegHeart />
+                <IoShareSocial />
               </div>
             </div>
-          </div>
           <div className="px-4 bg-gray-200">
             <p className="text-sm text-gray-500">{course.description}</p>
             <p>Instructor Information</p>
-            <div className=" border-2 first-letter flex gap-10">
+            <div className="  first-letter flex gap-10">
               <div>
                 <Image
-                  className="border-2 h-full"
+                  className=" h-full"
                   src={'/logo.png'}
                   width={100}
                   height={200}
@@ -103,23 +105,29 @@ const VideoPlayer = () => {
               </div>
             </div>
           </div>
+          </div>
           
-          {course.modules.map((module, index) => (
-            <div key={index} className="mt-4">
-              <h3 className="text-lg font-semibold text-gray-800">{module.title}</h3>
-              <div className="grid grid-cols-2 gap-4 mt-2">
+     <div className="w-80  border-red-900">
+     {course.modules.map((module, index) => (
+            <div key={index} className="mt-4 w-80">
+              {/* <h3 className="text-lg font-semibold text-gray-800">{module.title}</h3> */}
+              <div className="w-80 mt-2">
                 {module.videos.map((video, idx) => (
-                  <div key={idx}>
+                  <div key={idx} className="flex items-center gap-5">
+                    <Image
+                  className=" h-full"
+                  src={'/logo.png'}
+                  width={100}
+                  height={200}
+                  alt="VectorStock"
+                />
                     <h4 className="text-md font-medium text-gray-600">{video.title}</h4>
-                    <video className="w-full" controls preload="none">
-                      <source src={video.url} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
                   </div>
                 ))}
               </div>
             </div>
           ))}
+     </div>
         </div>
       )}
     </div>

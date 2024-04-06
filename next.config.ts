@@ -3,7 +3,7 @@ module.exports = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'ibb.com',
+        domains: ['example.com'], 
         port: '',
         pathname: '/**', // Wildcard to match any dynamic value after / in the path
       },
